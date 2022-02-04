@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Product } from '../products';
 
 @Component({
@@ -10,6 +10,8 @@ export class ProductAlertsComponent implements OnInit {
 
   priceThreshold: number = 700;
   @Input() product!: Product;
+  @Output() notify = new EventEmitter();
+
   constructor() { }
 
   ngOnInit(): void {
