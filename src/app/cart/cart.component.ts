@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { CartService } from '../cart.service';
 
 @Component({
@@ -10,9 +10,12 @@ import { CartService } from '../cart.service';
 export class CartComponent implements OnInit {
   items = this.cartService.getItems();
 
+  // PATRIZIO
   checkoutForm = this.formBuilder.group({
-    name: '',
-    address: ''
+    name: [null, Validators.required],
+    address: [null, Validators.required],
+    password: [null, Validators.required],
+    email: [null, [Validators.required, Validators.email]]
   });
 
   constructor(
@@ -21,6 +24,7 @@ export class CartComponent implements OnInit {
     ) { }
 
   onSubmit(): void {
+    
     // Process checkout data here
     this.items = this.cartService.clearCart();
     console.warn('Your order has been submitted', this.checkoutForm.value);
@@ -28,6 +32,7 @@ export class CartComponent implements OnInit {
   }
   
   ngOnInit(): void {
+    
   }
 
 }

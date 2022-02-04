@@ -24,5 +24,17 @@
     </label>
     <input id="address" type="text" formControlName="address">
   </div>
-  <button class="button" type="submit">Purchase</button>
+  <div>
+    <label for="password">
+      Password
+    </label>
+    <input id="password" type="password" formControlName="password">
+  </div>
+  <div>
+    <label for="email">
+      Email
+    </label>
+    <input id="email" type="text" formControlName="email">
+  </div>
+  <button class="btn btn-primary" type="submit" [disabled]="!checkoutForm.valid">Purchase</button>
 </form>
