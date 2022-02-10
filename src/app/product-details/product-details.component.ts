@@ -29,7 +29,12 @@ export class ProductDetailsComponent implements OnInit {
     // which is the ActivatedRouteSnapshot that contains information about the active route at that particular moment in time. 
     const routeParams = this.route.snapshot.paramMap;
     const productIdFromRoute = Number(routeParams.get('productId'));
-
+    if(isNaN(productIdFromRoute)) {
+      console.log('productId FromRoute IS NOT a number');
+    } else
+    {
+      console.log('productId FromRoute: ' + productIdFromRoute);
+    }
     // Find the product that correspond with the id provided in route.
     this.product = products.find(product => product.id === productIdFromRoute);
   }
